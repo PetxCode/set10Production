@@ -8,6 +8,16 @@
   font-weight: 300;
 }
 
+/* Customizing scrollbar */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #dfe7fe;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -2,12 +2,14 @@ import express, { Application } from "express";
 import cors from "cors";
 import http from "node:http";
 import { DefaultEventsMap, Server, Socket } from "socket.io";
+import env from "dotenv";
+env.config();
 
 import { dbConfig } from "./utils/dbConfig";
 
 import user from "./router/userRouter";
 
-const port: number = 2211;
+const port: any = 2244;
 const app: Application = express();
 
 app.use(express.json());
@@ -18,7 +20,7 @@ app.use("/api", user);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "http://localhost:8080",
     methods: ["GET", "POST"],
   },
 });

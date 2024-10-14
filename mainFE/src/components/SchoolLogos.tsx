@@ -99,15 +99,6 @@ const Card: FC<iProps> = ({ el }) => {
             className="absolute h-full w-full flex justify-center items-center "
           >
             <div className="absolute insert-0 h-full w-full bg-black opacity-15 top-0 left-0 z-20" />
-
-            {/* <motion.div
-              initial={{ y: 10 }}
-              animate={{ y: 0 }}
-              exit={{ y: 10 }}
-              className="w-[80%] h-[100px] rounded-md bg-white p-2 z-40 "
-            >
-              started
-            </motion.div> */}
           </motion.div>
         )}
       </AnimatePresence>

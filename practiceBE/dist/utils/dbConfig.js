@@ -8,13 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dbConfig = void 0;
 const mongoose_1 = require("mongoose");
-// const url: string = "mongodb://127.0.0.1:27017/practiceDB";
-const url = "mongodb+srv://skillscapeofficier:skillscapeofficier@cluster0.0dubq.mongodb.net/nextGenDB?retryWrites=true&w=majority&appName=Cluster0";
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const url = "mongodb://127.0.0.1:27017/practiceDB";
+// const url: string =
+//   "mongodb+srv://skillscapeofficier:skillscapeofficier@cluster0.0dubq.mongodb.net/nextGenDB?retryWrites=true&w=majority&appName=Cluster0";
 const dbConfig = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield (0, mongoose_1.connect)(url)
+    yield (0, mongoose_1.connect)(process.env.URL)
         .then(() => {
         console.clear();
         console.log("db Connected ❤️❤️🚀🚀🎮");

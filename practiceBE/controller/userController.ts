@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import userModel from "../model/userModel";
+import { streamUpload } from "../utils/streamifier";
+import cloudinary from "../utils/cloudinary";
 
 export const createAdminAccount = async (
   req: Request,
@@ -32,19 +34,31 @@ export const createAdminAccount = async (
 };
 
 export const createAccount = async (
-  req: Request,
+  req: any,
   res: Response
 ): Promise<Response> => {
   try {
-    const { name, email, password, schoolName, phoneNumber, avatar } = req.body;
-
-    const userAccount = await userModel.create({
-      name,
+    const {
+      firstName,
+      lastName,
       email,
       password,
       schoolName,
-      phoneNumber,
-      avatar,
+      phone,
+      presentClass,
+    } = req.body;
+
+    const { secure_url }: any = await cloudinary.uploader.upload(req.file.path);
+
+    const userAccount = await userModel.create({
+      firstName,
+      lastName,
+      email,
+      password,
+      schoolName,
+      phone,
+      avatar: secure_url,
+      presentClass,
     });
 
     return res.status(201).json({

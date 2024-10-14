@@ -8,9 +8,11 @@ import next from "../../assets/next.jpg";
 import codify from "../../assets/codify.png";
 
 import engr from "../../assets/web_asset/neuclus.png";
-import science from "../../assets/web_asset/burret.png";
+import science from "../../assets/web_asset/bio.png";
 import tech from "../../assets/web_asset/satallite.png";
 import math from "../../assets/web_asset/earth.png";
+import { CardView } from "./CardView";
+import AnimatedBackground from "@/components/AnimatedBG";
 
 const LandingPage = () => {
   const arr = [
@@ -139,7 +141,7 @@ const LandingPage = () => {
 
       <StudentProfileSlider />
 
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center px-2">
         <div className="w-[80%] my-20">
           <hr />
         </div>
@@ -151,16 +153,49 @@ const LandingPage = () => {
           </p>
 
           <div className=" md:flex gap-12 my-10 justify-between">
-            {arr.map((el: any) => (
-              <div
-                key={el.id}
-                className=" my-10 md:my-0 border-t-[3px] border-black flex-1 "
-              >
-                <p className="mt-5 font-semibold text-[28px] ">{el.title}</p>
-                <p className="text-[16px] mt-3">{el.description}</p>
-                <p className="text-[16px] mt-5">{el.description2}</p>
-              </div>
-            ))}
+            {/* <AnimatedBackground
+              className="rounded-lg bg-zinc-100 dark:bg-zinc-800"
+              transition={{
+                type: "spring",
+                bounce: 0.2,
+                duration: 0.6,
+              }}
+              enableHover
+            >
+              {arr.map((el: any) => (
+                <div
+                  key={el.id}
+                  className=" my-10 md:my-0 border-t-[3px] border-black flex-1 "
+                >
+                  <p className="mt-5 font-semibold text-[28px] ">{el.title}</p>
+                  <p className="text-[16px] mt-3">{el.description}</p>
+                  <p className="text-[16px] mt-5">{el.description2}</p>
+                </div>
+              ))}
+            </AnimatedBackground> */}
+            {/* <div className="grid grid-cols-2  md:grid-cols-3"> */}
+            <AnimatedBackground
+              className="rounded-lg bg-zinc-100 dark:bg-zinc-800 "
+              transition={{
+                type: "spring",
+                bounce: 0.2,
+                duration: 0.6,
+              }}
+              enableHover
+            >
+              {arr.map((el, index) => (
+                <div
+                  key={index}
+                  data-id={`card-${index}`}
+                  className="my-10 md:my-0 border-t-[3px] border-black w-[95%] p-2 cursor-move"
+                >
+                  <p className="mt-5 font-semibold text-[28px] ">{el.title}</p>
+                  <p className="text-[16px] mt-3">{el.description}</p>
+                  <p className="text-[16px] mt-5">{el.description2}</p>
+                </div>
+              ))}
+            </AnimatedBackground>
+            {/* </div> */}
           </div>
 
           <div className="mb-5">
@@ -187,33 +222,17 @@ const LandingPage = () => {
         </div>
       </div>
 
-      <div className="my-20 min-h-[500px] flex flex-col items-center">
-        {stemData?.map((el: any) => (
-          <div
-            className={`mb-5  w-[80%] gap-4 grid grid-cols-1 md:grid-cols-5 min-h-[200px] md:min-h-[300px]
-              odd:-order-1`}
-          >
-            <div
-              className={`order-2 md:order-1 col-span-1  md:col-span-2 h-full`}
-            >
-              <img
-                src={el.image}
-                className="object-contain h-[300px] w-[400px]"
-              />
-            </div>
-            <div
-              className={`odd:order-2 order-1 md:order-2 col-span-3 w-full md:w-[80%] `}
-            >
-              <div>
-                <p className="text-[25px] font-semibold uppercase underline mb-4 ">
-                  {el.title}
-                </p>
-                <p className="text-[16px] mb-5 ">{el.description}</p>
-                <p className="text-[16px] mb-5 ">{el.description2}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="w-full flex justify-center mt-10 px-2">
+        <div className="w-[80%] gap-4 grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4 ">
+          {stemData?.map((el: any) => (
+            <CardView
+              image={el.image}
+              title={el.title}
+              description={el.description}
+              description2={el.description2}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

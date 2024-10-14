@@ -7,7 +7,13 @@ const userModel = new Schema<iUserData>(
       type: String,
       default: "student",
     },
-    name: {
+    presentClass: {
+      type: String,
+    },
+    firstName: {
+      type: String,
+    },
+    lastName: {
       type: String,
     },
     email: {
@@ -20,7 +26,7 @@ const userModel = new Schema<iUserData>(
     schoolName: {
       type: String,
     },
-    phoneNumber: {
+    phone: {
       type: String,
       default: "080",
     },

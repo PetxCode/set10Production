@@ -2,12 +2,15 @@ import { Document } from "mongoose";
 
 interface iUser {
   status: string;
-  name: string;
+
+  lastName: string;
+  firstName: string;
   email: string;
   password: string;
   schoolName: string;
-  phoneNumber: string;
+  phone: string;
   avatar: string;
+  presentClass: string;
 
   stage1Result: Array<{}>;
   stage2Result: Array<{}>;
